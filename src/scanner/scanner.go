@@ -6,17 +6,15 @@ import (
 	"path/filepath"
 )
 
-// Scan a folder and return a string list including all paths of pdf files.
+// ScanFolder function shall scan a folder and return a string list including all paths of pdf files.
 func ScanFolder(folderPath string) ([]string, error) {
 
 	// Check folder path
 	if _, err := os.Stat(folderPath); err != nil {
 		if os.IsNotExist(err) {
 			log.WithField("path", folderPath).Error("The folder path doesn't exist!")
-			return nil, err
-		} else {
-			return nil, err
 		}
+		return nil, err
 	}
 
 	var books []string

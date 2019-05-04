@@ -4,6 +4,7 @@ import (
 	"os"
 	"strings"
 	"testing"
+	"path/filepath"
 )
 
 
@@ -37,8 +38,8 @@ func TestScanFolder(t *testing.T){
 	if len(books) != 2 {
 		t.Errorf("The number of books is incorrect, got: %d, want: %d", len(books), 2)
 	} else {
-		test1Path := "testlib/test1/test1.pdf"
-		test2Path := "testlib/test1/test2/test2.pdf"
+		test1Path := filepath.Join("testlib", "test1", "test1.pdf")
+		test2Path := filepath.Join("testlib", "test1", "test2", "test2.pdf")
 
 		if strings.Compare(books[0], test1Path) != 0 {
 			t.Errorf("The scanned path of test1.pdf is not incorrect, got: %s, want: %s", books[0], test1Path)
